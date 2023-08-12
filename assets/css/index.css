@@ -1,0 +1,48 @@
+#list1 .form-control {
+    border-color: transparent;
+  }
+  #list1 .form-control:focus {
+    border-color: transparent;
+    box-shadow: none;
+  }
+  #list1 .select-input.form-control[readonly]:not([disabled]) {
+    background-color: #fbfbfb;
+  }
+  body{
+    min-height:1600px;
+  }
+   .folders{
+    color: rgb(243 160 36 / 89%);;
+    font-size: 50px;
+    cursor: pointer;
+  }
+  .folders:hover{
+    color: rgb(219, 159, 67);
+  }
+   .name-folder{
+    font-size: 15px;
+    color: rgb(58, 58, 58);
+    cursor: pointer;
+  }
+
+  .color-orange{
+    color: #fd7e14;
+  }
+  .font_weight{
+    font-weight: bold;
+  }
+  .bg-color-or{
+    background-color: #fd7e14;
+  }
+.active{
+  background-color: #dddddd;
+  border-radius: 10px;
+}
+
+.delete_folder{
+  transform: translate(75px, -81px);
+  color: rgb(206, 59, 59);
+}
+.delete_folder:hover{
+  color: rgb(231, 0, 0);
+}

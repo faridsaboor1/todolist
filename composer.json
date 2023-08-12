@@ -1,0 +1,21 @@
+{
+    "name": "mhm/todolist",
+    "description": "the todo list project",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mhm\\Todolist\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hala company",
+            "email": "hadii.mohammadii1379@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "hekmatinasser/verta": "^8.3"
+    }
+}
