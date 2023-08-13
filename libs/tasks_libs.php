@@ -1,16 +1,13 @@
 <?php
-// function getCurentUserId(){
-//     return 1;
-// }
 
-// function getTasks() {
-//     global $pdo ;
-//     $user_id = getCurentUserId() ;
-//     $sql = "SELECT * FROM `tasks` WHERE user_id=$user_id" ;
-//     $stmt = $pdo -> prepare($sql) ;
-//     $stmt->execute() ;
-//     return $stmt->fetchAll() ;
-// }
+function getTasks() {
+    global $pdo ;
+    $user_id = getCurentUserId() ;
+    $sql = "SELECT * FROM `tasks` WHERE user_id=$user_id" ;
+    $stmt = $pdo -> prepare($sql) ;
+    $stmt->execute() ;
+    return $stmt->fetchAll() ;
+}
 
 // function addTask(string $folder_data){
 //     global $pdo ;
