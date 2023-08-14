@@ -10,8 +10,8 @@ if (isset($_GET['delete_folder']) && is_numeric($_GET['delete_folder'])) {
     echo 'folder succesfully DELETED !' ;
 }
 if (isset($_GET['delete_task']) && is_numeric($_GET['delete_task'])) {
-    $folder_id = $_GET['delete_task'] ;
-    deleteTask($folder_id) ;
+    $task_id = $_GET['delete_task'] ;
+    deleteTask($task_id) ;
     echo 'folder succesfully DELETED !' ;
 }
 

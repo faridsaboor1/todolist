@@ -6,9 +6,9 @@ function getCurentUserId(){
 function getFolders() {
     global $pdo ;
     $user_id = getCurentUserId() ;
-    $sql = "SELECT * FROM `folders` WHERE user_id=$user_id" ;
+    $sql = "SELECT * FROM `folders` WHERE user_id=:user_id" ;
     $stmt = $pdo -> prepare($sql) ;
-    $stmt->execute() ;
+    $stmt->execute([':user_id'=>$user_id]) ;
     return $stmt->fetchAll() ;
 }
 

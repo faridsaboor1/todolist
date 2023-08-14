@@ -2,19 +2,27 @@
 
 function getTasks() {
     global $pdo ;
+
+    $folder = $_GET['folder_id'] ?? null ;
+    $folderCondition = '' ;
+
+    if (isset($folder) and is_numeric($folder) and $folder!=0) {
+        $folderCondition = "AND folder_id=$folder" ;
+    }
+
     $user_id = getCurentUserId() ;
-    $sql = "SELECT * FROM `tasks` WHERE user_id=:user_id" ;
+    $sql = "SELECT * FROM `tasks` WHERE user_id=:user_id $folderCondition" ;
     $stmt = $pdo -> prepare($sql) ;
     $stmt->execute([':user_id'=>$user_id]) ;
     return $stmt->fetchAll() ;
 }
 
-function addTask(string $task_data){
+function addTask(string $task_title, $folder_id):bool{
     global $pdo ;
     $user_id = getCurentUserId() ;
-    $sql = 'INSERT INTO `tasks`(name,user_id)VALUES(:name,:user_id) ' ;
+    $sql = 'INSERT INTO `tasks`(title,user_id,folder_id)VALUES(:title,:user_id,:folder_id) ' ;
     $stmt = $pdo->prepare($sql) ;
-    $stmt->execute([':name'=>$task_data['name'] , 'user_id'=>$user_id]) ;
+    $stmt->execute([':title'=>$task_title, 'user_id'=>$user_id , ':folder_id' => $folder_id]) ;
     return $stmt->rowCount() ? true : false;
 }
 
