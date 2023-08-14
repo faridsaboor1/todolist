@@ -16,7 +16,10 @@ switch ($_POST['action']) {
         $folder_name = $_POST['folderName'] ;
         echo addFolder($folder_name) ;
         break;
-    
+    case 'addTask':
+        $task_name = $_POST['taskName'] ;
+        echo addTask($task_name) ;
+        break;
     default:
         echo 'invalid action !' ;
         die() ;

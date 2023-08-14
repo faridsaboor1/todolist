@@ -81,10 +81,10 @@
                   <div class="card">
                     <div class="card-body">
                       <div class="d-flex flex-row align-items-center">
-                        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="Add new Task...">
+                        <input type="text" class="form-control form-control-lg" id="addTaskNewInput" placeholder="Add new Task...">
                         <a href="#!" data-mdb-toggle="tooltip" title="Set due date"></a>
                         <div>
-                          <button type="button" class="btn btn-primary">Add</button>
+                          <button type="button" id="addBtnNewTask" class="btn btn-primary">Add</button>
                         </div>
                       </div>
                     </div>
@@ -92,36 +92,30 @@
                 </div>
               </div>   
               <!-- end add task -->
+              <div class="task-list">
               <?php foreach ($task_data as $key => $value) : ?>
                 <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
                   <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                     <div class="form-check">
-                      <input
-                        class="form-check-input me-0"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckChecked1"
-                        aria-label="..."
-                        checked
-                      />
+                      <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1" aria-label="..." class ="<?php $value['is_done'] ? 'checked'  : '' ; ?>" />
                     </div>
                   </li>
                   <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                    <p class="lead fw-normal mb-0"><?= $value['title'] ;?></p>
+                    <p class="lead fw-normal mb-0" id="title_list"><?= $value['title'] ;?></p>
                   </li>
                   <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                     <div class="d-flex flex-row justify-content-end mb-1">
                       <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
-                      <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+                      <a href="?delete_task=<?= $value['id'] ?>" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                     </div>
                     <div class="text-end text-muted">
                       <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
-                        <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>28th Jun 2020</p></a>
+                        <p class="small mb-0"><i class="fas fa-info-circle me-2"></i><?= $value['created_at'] ; ?></p></a>
                     </div>
                   </li>
                 </ul>
               <?php endforeach ; ?>
-       
+              </div>
 
             </div>
           </div>
@@ -140,6 +134,8 @@
 
   <script>
     $(document).ready(function(){
+      
+      //add folder to page  
       $('#addBtnNewFolder').click(function(e){
         var input = $('input#addNewFolderInput') ;
         $.ajax({
@@ -148,7 +144,6 @@
           data : {action:'addFolder',folderName:input.val()},
           success : function(response){
             if (response=='1') {
-            
               $('<div class="row "> <div class="col-xs-2 col-s-2 col-md-2 col-l-2 col-xl-2" > <a href="?folder_id=<?= $valuse['id']; ?>"> <i class="fa fa-folder folders"></i> <p class="name-folder">' +input.val()+ '</p> <a href="?delete_folder=<?= $valuse['id']; ?>"></a> </a> </div> </div>').appendTo('.container')
             }else{
               alert(response) ;
@@ -156,6 +151,22 @@
           }
         });
       }) ;
+       //add task to page  
+      //  $('#addBtnNewTask').click(function(e){
+      //   var inputTask = $('input#addTaskNewInput') ;
+      //   $.ajax({
+      //     url : 'process/ajax_handler.php',
+      //     method : 'post',
+      //     data : {action:'addTask',taskName:inputTask.val()},
+      //     success : function(response){
+      //       if (response=='1') {
+      //         $('<ul class="list-group list-group-horizontal rounded-0 bg-transparent"> <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent"> <div class="form-check"> <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1" aria-label="..." " /> </div> </li> <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent"> <p class="lead fw-normal mb-0" id="title_list">'  +input.val()+ '</p> </li> <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent"> <div class="d-flex flex-row justify-content-end mb-1"> <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a> <a href="?delete_task=<?= $value['id'] ?>" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a> </div> <div class="text-end text-muted"> <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date"> <p class="small mb-0"><i class="fas fa-info-circle me-2"></i><?= $value['created_at'] ; ?></p></a> </div> </li> </ul>').appendTo('.task-list')
+      //       }else{
+      //         alert(response) ;
+      //       }
+      //     }
+      //   });
+      // }) ;
     }) ;
   </script>
 </body>
