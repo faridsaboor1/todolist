@@ -14,10 +14,10 @@ if(!isset($_POST['action']) && empty($_POST['action'])){
 switch ($_POST['action']) {
     case 'addFolder':
         $folder_name = $_POST['folderName'] ;
-        // if (!isset($folder_name) || empty($folder_name)) {
-        //     echo 'please chose name folder and enter !' ;
-        //     die() ;
-        // }
+        if (!isset($folder_name) || empty($folder_name)) {
+            echo 'please chose name folder and enter !' ;
+            die() ;
+        }
         echo addFolder($folder_name) ;
         break;
     case 'addTask':

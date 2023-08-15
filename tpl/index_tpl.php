@@ -30,7 +30,6 @@
         <div class="col">
           <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
             <div class="card-body py-4 px-4 px-md-5">
-
               <p class="h1 text-center mt-3 mb-4 pb-3 ">
                 TODO LIST PAGE
               </p>
@@ -50,7 +49,7 @@
               <!-- end add folder -->
               <!-- start folders -->
               <section class="container" >
-                  <div class="row ">
+                  <div class="row  d-f">
                     <div class="col-xs-2 col-s-2 col-md-2 col-l-2 col-xl-2 <?= empty($_GET['folder_id']) ? 'active' : '' ?>" >
                       <a href="?folder_id=0">
                         <i class="fa fa-folder folders"></i>
@@ -59,7 +58,7 @@
                     </div>
                   </div>
                 <?php foreach($folder_data as $key => $valuse): ?>
-                  <div class="row ">
+                  <div class="row d-f">
                     <div class="col-xs-2 col-s-2 col-md-2 col-l-2 col-xl-2  <?= !empty($_GET['folder_id']) && $_GET['folder_id'] ==$valuse['id'] ? 'active' : ''; ?>" >
                       <a href="?folder_id=<?= $valuse['id']; ?>">
                         <i class="fa fa-folder folders"></i>
@@ -68,12 +67,12 @@
                       </a>
                     </div>
                   </div>
-                  <?php endforeach ; ?>
-              </section>
-              <!-- end folders -->
-              <hr class="my-4">      
-              <!-- start add task -->
-              <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3" style="margin: 0 auto;"> 
+                  <?php endforeach ; ?>    
+                </section>
+                <!-- end folders --> 
+                <hr class="my-4 col-xs-12 col-s-12 col-md-12 col-l-12 col-xl-12"> 
+                <!-- start add task -->
+                <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3" style="margin: 0 auto;"> 
                 <div class="pb-2">
                   <div class="card">
                     <div class="card-body">
@@ -95,11 +94,11 @@
                   <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
                     <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                       <div class="form-check">
-                        <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1" aria-label="..." class ="<?php $value['is_done'] ? 'checked'  : '' ; ?>" />
+                      <i class="<?= $value['is_done']?'fas fa-check-square':'fa-regular fa-square' ?> checkbox-style"></i>
                       </div>
                     </li>
                     <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                      <p class="lead fw-normal mb-0" id="title_list"><?= $value['title'] ;?></p>
+                      <p class="lead fw-normal mb-0 <?= $value['is_done'] ? 'text-dec-in': '' ?>" id="title_list"><?= $value['title'] ;?></p>
                     </li>
                     <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                       <div class="d-flex flex-row justify-content-end mb-1">
@@ -117,7 +116,6 @@
                 <p>folder is empty please add task ... </p>
               <?php endif ; ?>
               </div>
-
             </div>
           </div>
         </div>
@@ -125,14 +123,12 @@
     </div>
   </section>
   <!-- End your project here-->
-
   <!-- MDB -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <!-- Custom scripts -->
   <script type="text/javascript"></script>
   <!-- jquery cdn -->
   <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-
   <script>
     $(document).ready(function(){
       //add folder to page  
@@ -167,8 +163,11 @@
           }
         });
       }) ;
+
+      $('input#flexCheckChecked1').click(function(){
+        $('input#flexCheckChecked1').attr(check)
+      });
     }) ;
   </script>
 </body>
-
 </html>

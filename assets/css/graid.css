@@ -39,7 +39,7 @@
   }
   
   [class^="col-"] {
-    float: right;
+    float: left;
     padding-left: 15px;
     padding-right: 15px;
   }
