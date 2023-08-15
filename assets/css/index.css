@@ -56,3 +56,18 @@
 .text-dec-in{
   text-decoration: line-through;
 }
+.checkbox-style{
+  font-weight: 900;
+    background-color: #e3e3e3;
+    color: rgb(243, 116, 12);
+    font-size: 20px;
+    cursor: pointer;
+}
+.checkbox-stylee{
+  font-weight: 900;
+    background-color: rgb(243, 116, 12);
+    color: rgb(243, 116, 12);
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 2px;
+}

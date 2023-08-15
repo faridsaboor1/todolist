@@ -93,12 +93,12 @@
                 <?php foreach ($task_data as $key => $value) : ?>
                   <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
                     <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                      <div class="form-check">
-                      <i class="<?= $value['is_done']?'fas fa-check-square':'fa-regular fa-square' ?> checkbox-style"></i>
+                      <div class="form-check" id="checkIsDone"> 
+                        <i data-taskId="<?= $value['id'] ?>" class="idDone  <?= $value['is_done']?'fas fa-check-square checkbox-style':'fas fa-check-square checkbox-stylee' ?>"></i>
                       </div>
                     </li>
                     <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                      <p class="lead fw-normal mb-0 <?= $value['is_done'] ? 'text-dec-in': '' ?>" id="title_list"><?= $value['title'] ;?></p>
+                      <p class="lead fw-normal mb-0 <?= $value['is_done'] ? 'text-dec-in': '' ?> " id="title_list"><?= $value['title'] ;?></p>
                     </li>
                     <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                       <div class="d-flex flex-row justify-content-end mb-1">
@@ -163,9 +163,17 @@
           }
         });
       }) ;
-
-      $('input#flexCheckChecked1').click(function(){
-        $('input#flexCheckChecked1').attr(check)
+      // ajax done and is done
+      $('.idDone').click(function(){
+        var tId = $(this).attr('data-taskId') ;
+        $.ajax({
+          url : 'process/ajax_handler.php',
+          method : 'post',
+          data : {action:'doneSwitch',taskId : tId },
+          success : function(response){
+              location.reload() ;
+          }
+        });
       });
     }) ;
   </script>

@@ -12,14 +12,18 @@ if(!isset($_POST['action']) && empty($_POST['action'])){
 }
 
 switch ($_POST['action']) {
+    // add folder
     case 'addFolder':
         $folder_name = $_POST['folderName'] ;
+        // validation folader name input
         if (!isset($folder_name) || empty($folder_name)) {
             echo 'please chose name folder and enter !' ;
             die() ;
         }
+        // function query add folder
         echo addFolder($folder_name) ;
         break;
+    // add task
     case 'addTask':
         $task_name = $_POST['taskTitle'] ;
         $folder_id = $_POST['folderId'] ;
@@ -32,9 +36,22 @@ switch ($_POST['action']) {
         if (!isset($task_name) || empty($task_name)) {
             echo 'please enter to title task !' ;
             die() ;
-        }
-        //  query add task to database
+        } 
+        // function query add task to database
         echo addTask($task_name,$folder_id) ;
+        die() ;
+        break ;
+    // done and is done
+    case 'doneSwitch':
+        $taskId = $_POST['taskId'] ;
+        // validation task id
+        if (!isset($taskId) || !is_numeric($taskId)) {
+            echo 'task id erorr !' ;
+            die() ;
+        }
+        // function query add task
+        doneSwitch($taskId) ;
+        die() ;
         break;
     default:
         echo 'invalid action !' ;
