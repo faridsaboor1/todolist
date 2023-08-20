@@ -47,7 +47,7 @@
                 </div>
               </div>
               <!-- end add folder -->
-              <!-- start folders -->
+              <!-- start visite folders -->
               <section class="container" >
                   <div class="row  d-f">
                     <div class="col-xs-2 col-s-2 col-md-2 col-l-2 col-xl-2 <?= empty($_GET['folder_id']) ? 'active' : '' ?>" >
@@ -57,6 +57,7 @@
                       </a>
                     </div>
                   </div>
+
                 <?php foreach($folder_data as $key => $valuse): ?>
                   <div class="row d-f">
                     <div class="col-xs-2 col-s-2 col-md-2 col-l-2 col-xl-2  <?= !empty($_GET['folder_id']) && $_GET['folder_id'] ==$valuse['id'] ? 'active' : ''; ?>" >
@@ -69,7 +70,7 @@
                   </div>
                   <?php endforeach ; ?>    
                 </section>
-                <!-- end folders --> 
+                <!-- end visite folders --> 
                 <hr class="my-4 col-xs-12 col-s-12 col-md-12 col-l-12 col-xl-12"> 
                 <!-- start add task -->
                 <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3" style="margin: 0 auto;"> 
