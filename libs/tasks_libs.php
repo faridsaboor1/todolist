@@ -42,3 +42,21 @@ function doneSwitch(int $taskId):bool{
     $stmt->execute([':id'=>$taskId,':user_id'=>$user_id]) ;
     return $stmt->rowCount() ? true : false ;
 }
+
+function updateTask(int $taskId , $title){
+    global $pdo ;
+    $user_id = getCurentUserId() ;
+    $sql = "UPDATE `tasks` SET title=:title WHERE id=:id" ;
+    $stmt = $pdo->prepare($sql) ;
+    $stmt->execute([':title'=>$title,':id'=>$taskId]) ;
+    return $stmt->rowCount() ? true : false ;
+}
+
+function getTaskById(int $id){
+    global $pdo ;
+    $user_id = getCurentUserId() ;
+    $sql = "SELECT * FROM `tasks` WHERE id=:id" ;
+    $stmt = $pdo -> prepare($sql) ;
+    $stmt->execute([':id'=>$id]) ;
+    return $stmt->fetch(PDO::FETCH_OBJ) ;
+}

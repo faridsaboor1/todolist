@@ -15,6 +15,8 @@ if (isset($_GET['delete_task']) && is_numeric($_GET['delete_task'])) {
     echo 'folder succesfully DELETED !' ;
 }
 
+
+
 // query find folder data
 $folder_data = getFolders() ;
 // query find task data

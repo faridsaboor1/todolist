@@ -53,7 +53,7 @@
                     <div class="col-xs-2 col-s-2 col-md-2 col-l-2 col-xl-2 <?= empty($_GET['folder_id']) ? 'active' : '' ?>" >
                       <a href="?folder_id=0">
                         <i class="fa fa-folder folders"></i>
-                        <p class="name-folder ">All folder</p>
+                        <p class="name-folder ">All</p>
                       </a>
                     </div>
                   </div>
@@ -103,7 +103,7 @@
                     </li>
                     <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                       <div class="d-flex flex-row justify-content-end mb-1">
-                        <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
+                        <a href="update.php?update_task=<?= $value['id'] ;?>" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
                         <a href="?delete_task=<?= $value['id'] ; ?>" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo" onclick="return confirm('are you sure to delete task ?');"><i class="fas fa-trash-alt"></i></a>
                       </div>
                       <div class="text-end text-muted">
