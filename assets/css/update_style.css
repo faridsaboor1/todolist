@@ -1,0 +1,54 @@
+body{
+    background: #24282c;
+}
+
+
+
+form{
+    width: 350px;
+    height: 300px;
+    margin: 100px auto;
+    background: #343a40;
+    padding: 15px 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px 0px #006073c1;
+}
+
+form .inp_up{
+    background: transparent;
+    box-shadow: 0px 0px 5px 2.4px #2a2e33;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    padding: 12px 24px;
+    margin-bottom: 25px;
+    transition: all .3s linear;
+
+}
+
+form .inp_up:focus{
+    box-shadow: 0px 0px 5px 1px #2a9d90c5;
+}
+
+form .btn_up{
+    padding: 12px 24px;
+    border-radius: 7px;
+    background: #196058;
+    border: none;
+    outline: none;
+    color: #eeee;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    transition: all .3s linear;
+    cursor: pointer;
+}
+
+form .btn_up:hover{
+    transform: scale(1.03);
+    background: #217b70;
+}
